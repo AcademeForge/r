@@ -2,373 +2,708 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Aditya Raghav — Resume</title>
+<title>Resume — Aditya Raghav</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --paper: #f9f8f4;
-    --ink: #1f2933;
-    --ink-soft: #4b5563;
-    --navy: #122844;
-    --navy-deep: #0b1b30;
-    --brass: #a1783f;
-    --brass-light: #c9a670;
-    --hairline: #cdd2d6;
-    --panel: #eef1f3;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --slate:     #1e2832;
+  --slate2:    #29374a;
+  --slate3:    #3d5166;
+  --cream:     #faf8f5;
+  --cream2:    #f0ede8;
+  --amber:     #c49a3c;
+  --amber2:    #e8b84b;
+  --ink:       #1a2330;
+  --ink2:      #3a4f63;
+  --ink3:      #6b7f92;
+  --rule:      #d8d2c8;
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Source Sans 3', system-ui, sans-serif;
+}
 
-  html, body {
-    background: #d0d4d8;
-    font-family: 'Source Sans 3', Arial, sans-serif;
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-  }
+html, body {
+  background: #c8c4bc;
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
 
-  .page {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 20px auto;
-    background: var(--paper);
-    box-shadow: 0 6px 32px rgba(0,0,0,0.22);
-    padding: 14mm 16mm 14mm 16mm;
-  }
+/* ── Page shell ── */
+.page {
+  width: 210mm;
+  margin: 24px auto;
+  background: var(--cream);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.10), 0 16px 60px rgba(0,0,0,0.22);
+  position: relative;
+}
 
-  /* ── Header ── */
-  .header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8mm;
-    align-items: start;
-    padding-bottom: 5mm;
-    border-bottom: 2.5px solid var(--navy-deep);
-  }
+/* ── Ruled left border accent ── */
+.page::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  background: linear-gradient(to bottom, var(--amber) 0%, var(--slate) 40%, var(--slate) 100%);
+}
 
-  .name {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 40px;
-    line-height: 1.07;
-    color: var(--navy-deep);
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
+/* ─────────── HEADER ─────────── */
+.header {
+  background: var(--slate);
+  padding: 9mm 11mm 9mm 13mm;
+  display: grid;
+  grid-template-columns: 1fr 32mm;
+  gap: 8mm;
+  align-items: center;
+}
 
-  .dob-line {
-    margin-top: 11px;
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    letter-spacing: 0.2px;
-  }
-  .dob-line strong { color: var(--ink); font-weight: 600; }
+.name {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: 0.3px;
+}
 
-  .photo-wrap {
-    width: 32mm;
-    height: 38mm;
-    border: 2.5px solid var(--navy);
-    padding: 2px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    flex-shrink: 0;
-  }
-  .photo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+.name-sub {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-top: 7px;
+  margin-bottom: 10px;
+}
 
-  /* ── Divider ── */
-  .double-rule {
-    height: 6px;
-    margin: 5mm 0;
-    background:
-      linear-gradient(var(--navy), var(--navy)) top / 100% 2px no-repeat,
-      linear-gradient(var(--brass), var(--brass)) bottom / 100% 2px no-repeat;
-  }
+.header-contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 12px;
+  margin-top: 4px;
+}
 
-  /* ── Section label ── */
-  .section-label {
-    font-size: 11.5px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--navy);
-    font-weight: 700;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-label::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--hairline);
-  }
+.hc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.45;
+}
+.hc-item svg {
+  width: 11px; height: 11px;
+  fill: var(--amber);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.hc-item a { color: inherit; text-decoration: none; }
 
-  /* ── Contact + Address ── */
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 10mm;
-    margin-bottom: 6mm;
-  }
+/* Photo */
+.photo-wrap {
+  position: relative;
+  width: 32mm;
+  height: 38mm;
+  flex-shrink: 0;
+}
+.photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(196,154,60,0.55);
+  pointer-events: none;
+}
+.photo-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+.photo-fallback {
+  width: 100%; height: 100%;
+  background: var(--slate2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--amber2);
+  letter-spacing: 3px;
+}
 
-  .kv-list { font-size: 12.5px; line-height: 2; }
-  .kv-row { display: grid; grid-template-columns: 90px 14px 1fr; }
-  .kv-label { color: var(--ink-soft); font-weight: 600; }
-  .kv-sep { color: var(--brass); }
-  .kv-value { color: var(--ink); }
-  .kv-value a { color: var(--navy); text-decoration: none; }
+/* ─── Amber rule ─── */
+.amber-rule {
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber) 0%, var(--amber2) 40%, transparent 100%);
+}
 
-  /* ── Family ── */
-  .family-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 14mm;
-    font-size: 12.5px;
-    line-height: 2;
-    margin-bottom: 6mm;
-  }
-  .family-grid .kv-row { grid-template-columns: 100px 14px 1fr; }
+/* ─────────── BODY ─────────── */
+.body {
+  display: grid;
+  grid-template-columns: 66mm 1fr;
+}
 
-  /* ── Two-col body ── */
-  .body-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 10mm;
-    margin-top: 2mm;
-  }
+/* ─────────── SIDEBAR ─────────── */
+.sidebar {
+  background: var(--cream2);
+  border-right: 1px solid var(--rule);
+  padding: 8mm 7mm 10mm 13mm;
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
+}
 
-  .edu-entry { margin-bottom: 10px; }
-  .edu-title { font-weight: 700; font-size: 13px; color: var(--ink); }
-  .edu-detail { font-size: 12px; color: var(--ink-soft); line-height: 1.6; }
-  .edu-score { color: var(--brass); font-weight: 700; }
+.sb-section {}
 
-  .panel {
-    border: 1px solid var(--hairline);
-    background: var(--panel);
-    padding: 11px 14px;
-    height: fit-content;
-  }
-  .panel-title {
-    font-size: 11.5px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--navy);
-    font-weight: 700;
-    margin-bottom: 9px;
-  }
-  .panel ul {
-    padding-left: 16px;
-    font-size: 12px;
-    color: var(--ink);
-    line-height: 1.85;
-  }
-  .panel ul li strong { color: var(--navy-deep); }
+.sb-head {
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding-bottom: 5px;
+  margin-bottom: 7px;
+  border-bottom: 2px solid var(--amber);
+  display: inline-block;
+}
 
-  /* ── Objective ── */
-  .objective-text {
-    font-size: 12.5px;
-    line-height: 1.85;
-    color: var(--ink);
-    text-align: justify;
-  }
+/* Key-value pairs */
+.kv { display: flex; flex-direction: column; gap: 5px; }
+.kv-item {}
+.kv-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.kv-val {
+  font-size: 11.5px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.kv-val a { color: var(--slate2); text-decoration: none; }
 
-  /* ── Declaration ── */
-  .declaration {
-    font-size: 12px;
-    color: var(--ink-soft);
-    line-height: 1.75;
-    margin-top: 0;
-  }
+/* Address */
+.sb-addr {
+  font-size: 11.5px;
+  color: var(--ink2);
+  line-height: 1.8;
+}
 
-  .sign-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 12mm;
-    font-size: 12px;
-    color: var(--ink);
-  }
-  .sign-line {
-    display: inline-block;
-    width: 55mm;
-    border-bottom: 1px solid var(--ink);
-    margin-bottom: 5px;
-  }
-  .sign-row .signature { text-align: right; }
+/* Tag pills */
+.pill-list { display: flex; flex-direction: column; gap: 4px; }
+.pill {
+  font-size: 10.5px;
+  color: var(--ink2);
+  line-height: 1.5;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pill::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+}
 
-  @media print {
-    html, body { background: #fff; }
-    .page { margin: 0; box-shadow: none; width: auto; }
-    @page { size: A4; margin: 12mm; }
-  }
+/* Personal Info grid in sidebar */
+.pers-grid { display: flex; flex-direction: column; gap: 5px; }
 
-  @media (max-width: 780px) {
-    .page { width: 100%; padding: 8mm; }
-    .header, .info-grid, .body-grid, .family-grid, .sign-row {
-      grid-template-columns: 1fr;
-    }
-    .sign-row .signature { text-align: left; }
-  }
+/* ─────────── MAIN ─────────── */
+.main {
+  padding: 8mm 10mm 10mm 9mm;
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
+}
+
+/* Section heading */
+.sec-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+.sec-icon {
+  width: 22px; height: 22px;
+  background: var(--slate);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sec-icon svg { width: 12px; height: 12px; fill: var(--amber); }
+.sec-head h2 {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+.sec-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  margin-left: 8px;
+}
+
+/* Objective */
+.objective {
+  font-size: 11.5px;
+  line-height: 1.9;
+  color: var(--ink2);
+  text-align: justify;
+  padding-left: 31px;
+  font-weight: 300;
+}
+
+/* Education */
+.edu-list {
+  padding-left: 31px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  gap: 0 12px;
+  padding-bottom: 10px;
+}
+.edu-item:last-child { padding-bottom: 0; }
+
+.edu-bar {
+  background: linear-gradient(to bottom, var(--amber), rgba(30,40,50,0.15));
+  border-radius: 2px;
+  position: relative;
+}
+.edu-bar::before {
+  content: "";
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 1.5px var(--amber);
+}
+
+.edu-degree {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--serif);
+  padding-top: 1px;
+}
+.edu-school {
+  font-size: 10.5px;
+  color: var(--ink3);
+  margin-top: 2px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+.edu-badges {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+.badge-year {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  color: var(--ink3);
+  letter-spacing: 0.3px;
+}
+.badge-score {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 2px;
+  color: var(--amber);
+  background: rgba(196,154,60,0.08);
+  border: 1px solid rgba(196,154,60,0.30);
+  letter-spacing: 0.3px;
+}
+
+/* Family details */
+.family-table {
+  padding-left: 31px;
+  width: 100%;
+}
+.family-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.family-table td {
+  padding: 5px 8px 5px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 11.5px;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.family-table td:first-child {
+  width: 42%;
+  color: var(--ink3);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding-right: 6px;
+  vertical-align: middle;
+}
+.family-table td:last-child {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Declaration */
+.decl-text {
+  font-size: 11px;
+  color: var(--ink2);
+  line-height: 1.85;
+  padding-left: 31px;
+  text-align: justify;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.sign-section {
+  padding-left: 31px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm;
+  margin-top: 6mm;
+  align-items: end;
+}
+
+.sign-fields { display: flex; flex-direction: column; gap: 6px; }
+.sign-row-item { display: flex; flex-direction: column; gap: 2px; }
+.sign-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.sign-val {
+  font-size: 11.5px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink2);
+  padding-bottom: 3px;
+  min-width: 38mm;
+}
+
+.sign-area { text-align: right; }
+.sign-line {
+  display: block;
+  width: 52mm;
+  margin-left: auto;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 5px;
+}
+.sign-name {
+  font-size: 10.5px;
+  color: var(--ink2);
+  font-style: italic;
+}
+
+/* ─── Bottom bar ─── */
+.bottom-strip {
+  height: 3px;
+  background: linear-gradient(90deg, var(--amber) 0%, var(--slate2) 55%, var(--slate) 100%);
+}
+
+/* ─── Print ─── */
+@media print {
+  html, body { background: #fff; }
+  .page { margin: 0; box-shadow: none; width: 100%; }
+  @page { size: A4; margin: 0; }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 740px) {
+  .page { width: 100%; }
+  .header { grid-template-columns: 1fr; }
+  .body { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 1px solid var(--rule); }
+  .sign-section { grid-template-columns: 1fr; }
+  .sign-area { text-align: left; }
+  .sign-line { margin-left: 0; }
+  .header-contacts { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Header -->
+  <!-- ══ HEADER ══ -->
   <div class="header">
     <div>
-      <h1 class="name">Aditya<br>Raghav</h1>
-      <div class="dob-line"><strong>Date of Birth:</strong> 24th August, 2005</div>
+      <h1 class="name">Aditya Raghav</h1>
+      <p class="name-sub">Fresher &nbsp;·&nbsp; Banking &amp; Finance Aspirant</p>
+      <div class="header-contacts">
+        <div class="hc-item">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.25c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+          +91 9110033470
+        </div>
+        <div class="hc-item">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a>
+        </div>
+        <div class="hc-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 119.5 9 2.5 2.5 0 0112 11.5z"/></svg>
+          Nadawan, Barh, Patna — 803213
+        </div>
+        <div class="hc-item">
+          <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg>
+          D.O.B.: 24th August, 2005
+        </div>
+      </div>
     </div>
+
     <div class="photo-wrap">
-      <img src="candidate.png" alt="Aditya Raghav">
+      <img src="candidate.png" alt="Aditya Raghav"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-fallback">AR</div>
     </div>
   </div>
 
-  <div class="double-rule"></div>
+  <div class="amber-rule"></div>
 
-  <!-- Contact + Address -->
-  <div class="info-grid">
-    <div>
-      <p class="section-label">Contact Information</p>
-      <div class="kv-list">
-        <div class="kv-row">
-          <span class="kv-label">Mobile</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">+91 9110033470</span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-label">Email</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">
-            <a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div>
-      <p class="section-label">Permanent Address</p>
-      <div class="kv-list">
-        <div class="kv-row">
-          <span class="kv-label">Vill + P.O.</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">Nadawan</span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-label">P.S.</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">Barh</span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-label">District</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">Patna</span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-label">Pincode</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">803213</span>
-        </div>
-        <div class="kv-row">
-          <span class="kv-label">State</span>
-          <span class="kv-sep">–</span>
-          <span class="kv-value">Bihar</span>
+  <!-- ══ BODY ══ -->
+  <div class="body">
+
+    <!-- ─ SIDEBAR ─ -->
+    <div class="sidebar">
+
+      <!-- Contact -->
+      <div class="sb-section">
+        <p class="sb-head">Contact</p>
+        <div class="kv">
+          <div class="kv-item">
+            <div class="kv-label">Mobile</div>
+            <div class="kv-val">+91 9110033470</div>
+          </div>
+          <div class="kv-item">
+            <div class="kv-label">Email</div>
+            <div class="kv-val"><a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a></div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Family Details -->
-  <p class="section-label">Family Details</p>
-  <div class="family-grid" style="margin-bottom:6mm;">
-    <div class="kv-row">
-      <span class="kv-label">Father's Name</span>
-      <span class="kv-sep">–</span>
-      <span class="kv-value">Sameer Kumar</span>
-    </div>
-    <div class="kv-row">
-      <span class="kv-label">Occupation</span>
-      <span class="kv-sep">–</span>
-      <span class="kv-value">Farmer</span>
-    </div>
-    <div class="kv-row">
-      <span class="kv-label">Mother's Name</span>
-      <span class="kv-sep">–</span>
-      <span class="kv-value">Seema Devi</span>
-    </div>
-    <div class="kv-row">
-      <span class="kv-label">Siblings</span>
-      <span class="kv-sep">–</span>
-      <span class="kv-value">2</span>
-    </div>
-  </div>
-
-  <!-- Education + Additional Info -->
-  <div class="body-grid">
-    <div>
-      <p class="section-label">Education</p>
-
-      <div class="edu-entry">
-        <div class="edu-title">Graduation</div>
-        <div class="edu-detail">S.B.R. College, Bhatgaon, Barh, Patna</div>
-        <div class="edu-detail">Passed 2025 &nbsp;·&nbsp; <span class="edu-score">64%</span></div>
+      <!-- Address -->
+      <div class="sb-section">
+        <p class="sb-head">Address</p>
+        <div class="sb-addr">
+          Vill + P.O. Nadawan<br>
+          P.S. Barh, Distt. Patna<br>
+          Bihar — 803213
+        </div>
       </div>
 
-      <div class="edu-entry">
-        <div class="edu-title">Intermediate (10+2)</div>
-        <div class="edu-detail">S.B.R. College, Barh, Patna</div>
-        <div class="edu-detail">Passed 2022 &nbsp;·&nbsp; <span class="edu-score">65%</span></div>
+      <!-- Personal Details -->
+      <div class="sb-section">
+        <p class="sb-head">Personal Info</p>
+        <div class="kv">
+          <div class="kv-item">
+            <div class="kv-label">Date of Birth</div>
+            <div class="kv-val">24th August, 2005</div>
+          </div>
+          <div class="kv-item">
+            <div class="kv-label">Gender</div>
+            <div class="kv-val">Male</div>
+          </div>
+          <div class="kv-item">
+            <div class="kv-label">Nationality</div>
+            <div class="kv-val">Indian</div>
+          </div>
+        </div>
       </div>
 
-      <div class="edu-entry">
-        <div class="edu-title">Matriculation (10th)</div>
-        <div class="edu-detail">Saraswati Vidya Mandir, Gulabbagh, Barh, Patna</div>
-        <div class="edu-detail">Passed 2020 &nbsp;·&nbsp; <span class="edu-score">56%</span></div>
+      <!-- Languages -->
+      <div class="sb-section">
+        <p class="sb-head">Languages</p>
+        <div class="pill-list">
+          <div class="pill">English</div>
+          <div class="pill">Hindi</div>
+        </div>
       </div>
-    </div>
 
-    <div class="panel">
-      <p class="panel-title">Additional Information</p>
-      <ul>
-        <li><strong>Strengths:</strong> Good communication and interpersonal skills, Multitasking</li>
-        <li><strong>Hobbies:</strong> Internet surfing and playing cricket</li>
-        <li><strong>Languages:</strong> English and Hindi</li>
-      </ul>
-    </div>
-  </div>
+      <!-- Strengths -->
+      <div class="sb-section">
+        <p class="sb-head">Strengths</p>
+        <div class="pill-list">
+          <div class="pill">Communication &amp; Interpersonal Skills</div>
+          <div class="pill">Multitasking</div>
+          <div class="pill">Positive Attitude</div>
+          <div class="pill">Quick Learner</div>
+        </div>
+      </div>
 
-  <div class="double-rule"></div>
+      <!-- Hobbies -->
+      <div class="sb-section">
+        <p class="sb-head">Interests</p>
+        <div class="pill-list">
+          <div class="pill">Internet Surfing</div>
+          <div class="pill">Playing Cricket</div>
+        </div>
+      </div>
 
-  <!-- Career Objective -->
-  <p class="section-label">Career Objective</p>
-  <p class="objective-text" style="margin-bottom:6mm;">
-    Seeking challenging assignments that would facilitate the maximum utilization of my skills and
-    knowledge, while contributing positively to the organization. Eager to learn, grow, and take on
-    responsibilities that allow me to develop professionally and make a meaningful contribution.
-  </p>
+    </div><!-- /sidebar -->
 
-  <!-- Declaration -->
-  <p class="section-label">Declaration</p>
-  <p class="declaration" style="margin-bottom:0;">
-    I hereby declare that the information furnished above is true and correct to the best of my
-    knowledge and belief.
-  </p>
+    <!-- ─ MAIN ─ -->
+    <div class="main">
 
-  <div class="sign-row">
-    <div>
-      <div style="margin-bottom:6px;"><strong>Place:</strong> Patna, Bihar</div>
-      <div><strong>Date:</strong> &nbsp;&nbsp;&nbsp;______________</div>
-    </div>
-    <div class="signature">
-      <div><span class="sign-line"></span></div>
-      <div>(Aditya Raghav)</div>
-    </div>
-  </div>
+      <!-- Career Objective -->
+      <div>
+        <div class="sec-head">
+          <div class="sec-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 17.93V18a1 1 0 00-2 0v1.93A8 8 0 014.07 13H6a1 1 0 000-2H4.07A8 8 0 0111 4.07V6a1 1 0 002 0V4.07A8 8 0 0119.93 11H18a1 1 0 000 2h1.93A8 8 0 0113 19.93zM12 14a2 2 0 110-4 2 2 0 010 4z"/></svg>
+          </div>
+          <h2>Career Objective</h2>
+        </div>
+        <p class="objective">
+          A dedicated and motivated graduate seeking to begin a career in the banking and financial
+          services sector. I aspire to leverage my communication skills, diligent work ethic, and
+          eagerness to learn in a structured environment. Committed to delivering consistent
+          performance, maintaining accuracy in all tasks, and contributing meaningfully to the
+          goals of the organisation through dedication and integrity.
+        </p>
+      </div>
+
+      <!-- Education -->
+      <div>
+        <div class="sec-head">
+          <div class="sec-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm-7 9.24V16l7 3.82L19 16v-3.76l-7 3.82-7-3.82z"/></svg>
+          </div>
+          <h2>Educational Qualification</h2>
+        </div>
+        <div class="edu-list">
+
+          <div class="edu-item">
+            <div class="edu-bar"></div>
+            <div>
+              <div class="edu-degree">Graduation (B.A.)</div>
+              <div class="edu-school">S.B.R. College, Bhatgaon, Barh, Patna · Magadh University</div>
+              <div class="edu-badges">
+                <span class="badge-year">Passed 2025</span>
+                <span class="badge-score">64%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-bar"></div>
+            <div>
+              <div class="edu-degree">Intermediate (10+2)</div>
+              <div class="edu-school">S.B.R. College, Barh, Patna · Bihar School Examination Board</div>
+              <div class="edu-badges">
+                <span class="badge-year">Passed 2022</span>
+                <span class="badge-score">65%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-bar"></div>
+            <div>
+              <div class="edu-degree">Matriculation (10th)</div>
+              <div class="edu-school">Saraswati Vidya Mandir, Gulabbagh, Barh, Patna</div>
+              <div class="edu-badges">
+                <span class="badge-year">Passed 2020</span>
+                <span class="badge-score">56%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Family Details -->
+      <div>
+        <div class="sec-head">
+          <div class="sec-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h2>Family Details</h2>
+        </div>
+        <div class="family-table">
+          <table>
+            <tr>
+              <td>Father's Name</td>
+              <td>Sameer Kumar</td>
+            </tr>
+            <tr>
+              <td>Father's Occupation</td>
+              <td>Farmer</td>
+            </tr>
+            <tr>
+              <td>Mother's Name</td>
+              <td>Seema Devi</td>
+            </tr>
+            <tr>
+              <td>Number of Siblings</td>
+              <td>2</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Declaration -->
+      <div>
+        <div class="sec-head">
+          <div class="sec-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/></svg>
+          </div>
+          <h2>Declaration</h2>
+        </div>
+        <p class="decl-text">
+          I hereby declare that all the information furnished above is true, complete, and correct to
+          the best of my knowledge and belief. I understand that any false or misleading information
+          may result in disqualification of my candidature at any stage.
+        </p>
+
+        <div class="sign-section">
+          <div class="sign-fields">
+            <div class="sign-row-item">
+              <span class="sign-lbl">Place</span>
+              <span class="sign-val">Patna, Bihar</span>
+            </div>
+            <div class="sign-row-item" style="margin-top:5px;">
+              <span class="sign-lbl">Date</span>
+              <span class="sign-val">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+          </div>
+          <div class="sign-area">
+            <span class="sign-line">&nbsp;</span>
+            <div class="sign-name">(Aditya Raghav)</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main -->
+  </div><!-- /body -->
+
+  <div class="bottom-strip"></div>
 
 </div>
 </body>
