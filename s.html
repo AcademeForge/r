@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aditya Raghav — Resume</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f9f8f4;
+    --ink: #1f2933;
+    --ink-soft: #4b5563;
+    --navy: #122844;
+    --navy-deep: #0b1b30;
+    --brass: #a1783f;
+    --brass-light: #c9a670;
+    --hairline: #cdd2d6;
+    --panel: #eef1f3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #d0d4d8;
+    font-family: 'Source Sans 3', Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: var(--paper);
+    box-shadow: 0 6px 32px rgba(0,0,0,0.22);
+    padding: 14mm 16mm 14mm 16mm;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8mm;
+    align-items: start;
+    padding-bottom: 5mm;
+    border-bottom: 2.5px solid var(--navy-deep);
+  }
+
+  .name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 40px;
+    line-height: 1.07;
+    color: var(--navy-deep);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .dob-line {
+    margin-top: 11px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2px;
+  }
+  .dob-line strong { color: var(--ink); font-weight: 600; }
+
+  .photo-wrap {
+    width: 32mm;
+    height: 38mm;
+    border: 2.5px solid var(--navy);
+    padding: 2px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    flex-shrink: 0;
+  }
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Divider ── */
+  .double-rule {
+    height: 6px;
+    margin: 5mm 0;
+    background:
+      linear-gradient(var(--navy), var(--navy)) top / 100% 2px no-repeat,
+      linear-gradient(var(--brass), var(--brass)) bottom / 100% 2px no-repeat;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 11.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  /* ── Contact + Address ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 10mm;
+    margin-bottom: 6mm;
+  }
+
+  .kv-list { font-size: 12.5px; line-height: 2; }
+  .kv-row { display: grid; grid-template-columns: 90px 14px 1fr; }
+  .kv-label { color: var(--ink-soft); font-weight: 600; }
+  .kv-sep { color: var(--brass); }
+  .kv-value { color: var(--ink); }
+  .kv-value a { color: var(--navy); text-decoration: none; }
+
+  /* ── Family ── */
+  .family-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14mm;
+    font-size: 12.5px;
+    line-height: 2;
+    margin-bottom: 6mm;
+  }
+  .family-grid .kv-row { grid-template-columns: 100px 14px 1fr; }
+
+  /* ── Two-col body ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 10mm;
+    margin-top: 2mm;
+  }
+
+  .edu-entry { margin-bottom: 10px; }
+  .edu-title { font-weight: 700; font-size: 13px; color: var(--ink); }
+  .edu-detail { font-size: 12px; color: var(--ink-soft); line-height: 1.6; }
+  .edu-score { color: var(--brass); font-weight: 700; }
+
+  .panel {
+    border: 1px solid var(--hairline);
+    background: var(--panel);
+    padding: 11px 14px;
+    height: fit-content;
+  }
+  .panel-title {
+    font-size: 11.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+  .panel ul {
+    padding-left: 16px;
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+  .panel ul li strong { color: var(--navy-deep); }
+
+  /* ── Objective ── */
+  .objective-text {
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--ink);
+    text-align: justify;
+  }
+
+  /* ── Declaration ── */
+  .declaration {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-top: 0;
+  }
+
+  .sign-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 12mm;
+    font-size: 12px;
+    color: var(--ink);
+  }
+  .sign-line {
+    display: inline-block;
+    width: 55mm;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 5px;
+  }
+  .sign-row .signature { text-align: right; }
+
+  @media print {
+    html, body { background: #fff; }
+    .page { margin: 0; box-shadow: none; width: auto; }
+    @page { size: A4; margin: 12mm; }
+  }
+
+  @media (max-width: 780px) {
+    .page { width: 100%; padding: 8mm; }
+    .header, .info-grid, .body-grid, .family-grid, .sign-row {
+      grid-template-columns: 1fr;
+    }
+    .sign-row .signature { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1 class="name">Aditya<br>Raghav</h1>
+      <div class="dob-line"><strong>Date of Birth:</strong> 24th August, 2005</div>
+    </div>
+    <div class="photo-wrap">
+      <img src="candidate.png" alt="Aditya Raghav">
+    </div>
+  </div>
+
+  <div class="double-rule"></div>
+
+  <!-- Contact + Address -->
+  <div class="info-grid">
+    <div>
+      <p class="section-label">Contact Information</p>
+      <div class="kv-list">
+        <div class="kv-row">
+          <span class="kv-label">Mobile</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">+91 9110033470</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">Email</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">
+            <a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">Permanent Address</p>
+      <div class="kv-list">
+        <div class="kv-row">
+          <span class="kv-label">Vill + P.O.</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Nadawan</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">P.S.</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Barh</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">District</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Patna</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">Pincode</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">803213</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">State</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Bihar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Family Details -->
+  <p class="section-label">Family Details</p>
+  <div class="family-grid" style="margin-bottom:6mm;">
+    <div class="kv-row">
+      <span class="kv-label">Father's Name</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">Sameer Kumar</span>
+    </div>
+    <div class="kv-row">
+      <span class="kv-label">Occupation</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">Farmer</span>
+    </div>
+    <div class="kv-row">
+      <span class="kv-label">Mother's Name</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">Seema Devi</span>
+    </div>
+    <div class="kv-row">
+      <span class="kv-label">Siblings</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">2</span>
+    </div>
+  </div>
+
+  <!-- Education + Additional Info -->
+  <div class="body-grid">
+    <div>
+      <p class="section-label">Education</p>
+
+      <div class="edu-entry">
+        <div class="edu-title">Graduation</div>
+        <div class="edu-detail">S.B.R. College, Bhatgaon, Barh, Patna</div>
+        <div class="edu-detail">Passed 2025 &nbsp;·&nbsp; <span class="edu-score">64%</span></div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-title">Intermediate (10+2)</div>
+        <div class="edu-detail">S.B.R. College, Barh, Patna</div>
+        <div class="edu-detail">Passed 2022 &nbsp;·&nbsp; <span class="edu-score">65%</span></div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-title">Matriculation (10th)</div>
+        <div class="edu-detail">Saraswati Vidya Mandir, Gulabbagh, Barh, Patna</div>
+        <div class="edu-detail">Passed 2020 &nbsp;·&nbsp; <span class="edu-score">56%</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">Additional Information</p>
+      <ul>
+        <li><strong>Strengths:</strong> Good communication and interpersonal skills, Multitasking</li>
+        <li><strong>Hobbies:</strong> Internet surfing and playing cricket</li>
+        <li><strong>Languages:</strong> English and Hindi</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="double-rule"></div>
+
+  <!-- Career Objective -->
+  <p class="section-label">Career Objective</p>
+  <p class="objective-text" style="margin-bottom:6mm;">
+    Seeking challenging assignments that would facilitate the maximum utilization of my skills and
+    knowledge, while contributing positively to the organization. Eager to learn, grow, and take on
+    responsibilities that allow me to develop professionally and make a meaningful contribution.
+  </p>
+
+  <!-- Declaration -->
+  <p class="section-label">Declaration</p>
+  <p class="declaration" style="margin-bottom:0;">
+    I hereby declare that the information furnished above is true and correct to the best of my
+    knowledge and belief.
+  </p>
+
+  <div class="sign-row">
+    <div>
+      <div style="margin-bottom:6px;"><strong>Place:</strong> Patna, Bihar</div>
+      <div><strong>Date:</strong> &nbsp;&nbsp;&nbsp;______________</div>
+    </div>
+    <div class="signature">
+      <div><span class="sign-line"></span></div>
+      <div>(Aditya Raghav)</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
