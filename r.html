@@ -2,645 +2,373 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Resume — Aditya Raghav</title>
+<title>Aditya Raghav — Resume</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f9f8f4;
+    --ink: #1f2933;
+    --ink-soft: #4b5563;
+    --navy: #122844;
+    --navy-deep: #0b1b30;
+    --brass: #a1783f;
+    --brass-light: #c9a670;
+    --hairline: #cdd2d6;
+    --panel: #eef1f3;
+  }
 
-:root {
-  --navy:      #0f2340;
-  --navy2:     #1a3560;
-  --gold:      #b8913a;
-  --gold2:     #d4a84b;
-  --bg:        #f6f4ef;
-  --ink:       #1c2b3a;
-  --ink2:      #3d5166;
-  --ink3:      #6b7f92;
-  --line:      #d5cfc6;
-  --panel:     #eaecef;
-  --panelbdr:  #c8ccd4;
-  --serif:     'EB Garamond', Georgia, serif;
-  --sans:      'Inter', Arial, sans-serif;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  background: #b8bfc5;
-  font-family: var(--sans);
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-}
+  html, body {
+    background: #d0d4d8;
+    font-family: 'Source Sans 3', Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* ─── Page shell ─── */
-.page {
-  width: 210mm;
-  margin: 20px auto;
-  background: var(--bg);
-  box-shadow: 0 8px 48px rgba(0,0,0,0.30);
-  overflow: hidden;
-}
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: var(--paper);
+    box-shadow: 0 6px 32px rgba(0,0,0,0.22);
+    padding: 14mm 16mm 14mm 16mm;
+  }
 
-/* ─── Top accent bar ─── */
-.topbar {
-  height: 6px;
-  background: linear-gradient(90deg, var(--navy) 0%, var(--navy2) 60%, var(--gold) 100%);
-}
+  /* ── Header ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8mm;
+    align-items: start;
+    padding-bottom: 5mm;
+    border-bottom: 2.5px solid var(--navy-deep);
+  }
 
-/* ─── Header ─── */
-.header {
-  background: var(--navy);
-  padding: 10mm 12mm 10mm 12mm;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8mm;
-  align-items: center;
-  position: relative;
-}
-.header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    135deg, transparent, transparent 20px,
-    rgba(255,255,255,0.018) 20px, rgba(255,255,255,0.018) 21px
-  );
-  pointer-events: none;
-}
+  .name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 40px;
+    line-height: 1.07;
+    color: var(--navy-deep);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
 
-.header-left { position: relative; z-index: 1; }
+  .dob-line {
+    margin-top: 11px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2px;
+  }
+  .dob-line strong { color: var(--ink); font-weight: 600; }
 
-.name {
-  font-family: var(--serif);
-  font-size: 44px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.02;
-  letter-spacing: 0.6px;
-}
+  .photo-wrap {
+    width: 32mm;
+    height: 38mm;
+    border: 2.5px solid var(--navy);
+    padding: 2px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    flex-shrink: 0;
+  }
+  .photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
-.name-rule {
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold2));
-  border-radius: 2px;
-  margin: 8px 0 11px;
-}
+  /* ── Divider ── */
+  .double-rule {
+    height: 6px;
+    margin: 5mm 0;
+    background:
+      linear-gradient(var(--navy), var(--navy)) top / 100% 2px no-repeat,
+      linear-gradient(var(--brass), var(--brass)) bottom / 100% 2px no-repeat;
+  }
 
-.header-meta { display: flex; flex-direction: column; gap: 5px; }
+  /* ── Section label ── */
+  .section-label {
+    font-size: 11.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--hairline);
+  }
 
-.meta-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.80);
-  line-height: 1.3;
-}
-.meta-row svg {
-  width: 13px; height: 13px;
-  fill: var(--gold2);
-  flex-shrink: 0;
-}
-.meta-row a { color: rgba(255,255,255,0.80); text-decoration: none; }
+  /* ── Contact + Address ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 10mm;
+    margin-bottom: 6mm;
+  }
 
-/* Photo */
-.photo-wrap {
-  position: relative;
-  z-index: 1;
-  width: 29mm;
-  height: 35mm;
-  flex-shrink: 0;
-}
-.photo-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border: 2px solid var(--gold);
-  border-radius: 2px;
-  pointer-events: none;
-}
-.photo-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 2px;
-}
-.photo-fallback {
-  width: 100%; height: 100%;
-  background: var(--navy2);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--gold2);
-  border-radius: 2px;
-  letter-spacing: 2px;
-}
+  .kv-list { font-size: 12.5px; line-height: 2; }
+  .kv-row { display: grid; grid-template-columns: 90px 14px 1fr; }
+  .kv-label { color: var(--ink-soft); font-weight: 600; }
+  .kv-sep { color: var(--brass); }
+  .kv-value { color: var(--ink); }
+  .kv-value a { color: var(--navy); text-decoration: none; }
 
-/* ─── Gold rule ─── */
-.gold-rule {
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold) 0%, var(--gold2) 50%, var(--gold) 100%);
-}
+  /* ── Family ── */
+  .family-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14mm;
+    font-size: 12.5px;
+    line-height: 2;
+    margin-bottom: 6mm;
+  }
+  .family-grid .kv-row { grid-template-columns: 100px 14px 1fr; }
 
-/* ─── Body layout ─── */
-.body {
-  display: grid;
-  grid-template-columns: 68mm 1fr;
-}
+  /* ── Two-col body ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 10mm;
+    margin-top: 2mm;
+  }
 
-/* ─── Sidebar ─── */
-.sidebar {
-  background: var(--navy);
-  padding: 8mm 8mm 10mm 8mm;
-  display: flex;
-  flex-direction: column;
-  gap: 7mm;
-}
+  .edu-entry { margin-bottom: 10px; }
+  .edu-title { font-weight: 700; font-size: 13px; color: var(--ink); }
+  .edu-detail { font-size: 12px; color: var(--ink-soft); line-height: 1.6; }
+  .edu-score { color: var(--brass); font-weight: 700; }
 
-.sb-title {
-  font-size: 8px;
-  letter-spacing: 2.8px;
-  text-transform: uppercase;
-  color: var(--gold2);
-  font-weight: 700;
-  padding-bottom: 5px;
-  margin-bottom: 6px;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-}
+  .panel {
+    border: 1px solid var(--hairline);
+    background: var(--panel);
+    padding: 11px 14px;
+    height: fit-content;
+  }
+  .panel-title {
+    font-size: 11.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 9px;
+  }
+  .panel ul {
+    padding-left: 16px;
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+  .panel ul li strong { color: var(--navy-deep); }
 
-.sb-kv { display: flex; flex-direction: column; gap: 6px; }
-.sb-kv-item {}
-.sb-kv-label {
-  font-size: 8.5px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  font-weight: 600;
-  margin-bottom: 1px;
-}
-.sb-kv-value {
-  font-size: 11px;
-  color: rgba(255,255,255,0.88);
-  word-break: break-all;
-  overflow-wrap: anywhere;
-  line-height: 1.4;
-}
-.sb-kv-value a { color: rgba(255,255,255,0.88); text-decoration: none; }
+  /* ── Objective ── */
+  .objective-text {
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--ink);
+    text-align: justify;
+  }
 
-.sb-addr {
-  font-size: 11px;
-  color: rgba(255,255,255,0.80);
-  line-height: 1.75;
-}
+  /* ── Declaration ── */
+  .declaration {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-top: 0;
+  }
 
-.tag-list { display: flex; flex-direction: column; gap: 4px; }
-.tag {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.11);
-  border-radius: 3px;
-  padding: 4px 8px;
-  font-size: 10.5px;
-  color: rgba(255,255,255,0.85);
-  line-height: 1.5;
-}
+  .sign-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 12mm;
+    font-size: 12px;
+    color: var(--ink);
+  }
+  .sign-line {
+    display: inline-block;
+    width: 55mm;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 5px;
+  }
+  .sign-row .signature { text-align: right; }
 
-/* ─── Main ─── */
-.main {
-  padding: 8mm 11mm 10mm 9mm;
-  display: flex;
-  flex-direction: column;
-  gap: 6mm;
-}
+  @media print {
+    html, body { background: #fff; }
+    .page { margin: 0; box-shadow: none; width: auto; }
+    @page { size: A4; margin: 12mm; }
+  }
 
-/* Section heading */
-.sec-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.sec-icon {
-  width: 24px; height: 24px;
-  background: var(--navy);
-  border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.sec-icon svg { width: 13px; height: 13px; fill: var(--gold2); }
-.sec-head h2 {
-  font-family: var(--serif);
-  font-size: 15.5px;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-.sec-head::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-  margin-left: 6px;
-}
-
-/* Objective */
-.objective {
-  font-size: 12px;
-  line-height: 1.85;
-  color: var(--ink2);
-  text-align: justify;
-  padding-left: 32px;
-}
-
-/* Education timeline */
-.edu-list {
-  padding-left: 32px;
-  display: flex;
-  flex-direction: column;
-}
-
-.edu-item {
-  display: grid;
-  grid-template-columns: 3px 1fr;
-  gap: 0 11px;
-  padding-bottom: 9px;
-}
-.edu-item:last-child { padding-bottom: 0; }
-
-.edu-bar {
-  width: 3px;
-  background: linear-gradient(to bottom, var(--gold), rgba(15,35,64,0.25));
-  border-radius: 2px;
-  position: relative;
-}
-.edu-bar::before {
-  content: "";
-  position: absolute;
-  top: 4px; left: 50%;
-  transform: translateX(-50%);
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--gold);
-}
-
-.edu-degree { font-size: 12.5px; font-weight: 700; color: var(--ink); }
-.edu-school { font-size: 11px; color: var(--ink2); margin-top: 1px; line-height: 1.5; }
-.edu-badges {
-  display: flex; gap: 5px; margin-top: 4px; flex-wrap: wrap;
-}
-.badge-year, .badge-score {
-  font-size: 9.5px; font-weight: 600;
-  padding: 1px 7px;
-  border-radius: 20px;
-  line-height: 1.6;
-}
-.badge-year {
-  color: var(--ink3);
-  background: var(--panel);
-  border: 1px solid var(--panelbdr);
-}
-.badge-score {
-  color: var(--gold);
-  background: rgba(184,145,58,0.10);
-  border: 1px solid rgba(184,145,58,0.28);
-}
-
-/* Family */
-.family-grid {
-  padding-left: 32px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 8mm;
-}
-.fam-item {
-  padding: 5px 0;
-  border-bottom: 1px dashed var(--line);
-  display: flex;
-  flex-direction: column;
-}
-.fam-label {
-  font-size: 8.5px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--ink3);
-  font-weight: 600;
-}
-.fam-value {
-  font-size: 12px;
-  color: var(--ink);
-  font-weight: 500;
-  margin-top: 1px;
-}
-
-/* Declaration */
-.decl-text {
-  font-size: 11.5px;
-  color: var(--ink2);
-  line-height: 1.8;
-  padding-left: 32px;
-  text-align: justify;
-}
-
-.sign-row {
-  padding-left: 32px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: end;
-  gap: 8mm;
-  margin-top: 7mm;
-  font-size: 11.5px;
-  color: var(--ink2);
-}
-.sign-field { display: flex; flex-direction: column; gap: 3px; margin-bottom: 6px; }
-.sign-field-label {
-  font-size: 8.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--ink3);
-  font-weight: 600;
-}
-.sign-field-val {
-  font-size: 12px;
-  color: var(--ink);
-  padding-bottom: 2px;
-  border-bottom: 1px solid var(--ink2);
-  min-width: 44mm;
-}
-.sign-right { text-align: right; }
-.sign-line {
-  display: inline-block;
-  width: 48mm;
-  border-bottom: 1px solid var(--ink);
-  margin-bottom: 4px;
-}
-.sign-name { font-size: 11px; color: var(--ink2); }
-
-/* ─── Bottom bar ─── */
-.bottombar {
-  height: 5px;
-  background: linear-gradient(90deg, var(--gold) 0%, var(--navy2) 60%, var(--navy) 100%);
-}
-
-/* ─── Print ─── */
-@media print {
-  html, body { background: #fff; }
-  .page { margin: 0; box-shadow: none; width: 100%; }
-  @page { size: A4; margin: 0; }
-}
-
-/* ─── Mobile ─── */
-@media (max-width: 740px) {
-  .page { width: 100%; }
-  .header { grid-template-columns: 1fr; }
-  .photo-wrap { width: 26mm; height: 32mm; }
-  .body { grid-template-columns: 1fr; }
-  .sidebar { flex-direction: row; flex-wrap: wrap; gap: 5mm; padding: 6mm; }
-  .sidebar > div { min-width: 40%; flex: 1; }
-  .family-grid { grid-template-columns: 1fr; }
-  .sign-row { grid-template-columns: 1fr; }
-  .sign-right { text-align: left; }
-}
+  @media (max-width: 780px) {
+    .page { width: 100%; padding: 8mm; }
+    .header, .info-grid, .body-grid, .family-grid, .sign-row {
+      grid-template-columns: 1fr;
+    }
+    .sign-row .signature { text-align: left; }
+  }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <div class="topbar"></div>
-
-  <!-- ═══ HEADER ═══ -->
+  <!-- Header -->
   <div class="header">
-    <div class="header-left">
-      <h1 class="name">Aditya Raghav</h1>
-      <div class="name-rule"></div>
-      <div class="header-meta">
-        <div class="meta-row">
-          <!-- calendar -->
-          <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg>
-          Date of Birth: 24th August, 2005
-        </div>
-        <div class="meta-row">
-          <!-- phone -->
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.25c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
-          +91 9110033470
-        </div>
-        <div class="meta-row">
-          <!-- email -->
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a>
-        </div>
-        <div class="meta-row">
-          <!-- location -->
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 119.5 9 2.5 2.5 0 0112 11.5z"/></svg>
-          Nadawan, Barh, Patna — 803213, Bihar
-        </div>
-      </div>
+    <div>
+      <h1 class="name">Aditya<br>Raghav</h1>
+      <div class="dob-line"><strong>Date of Birth:</strong> 24th August, 2005</div>
     </div>
-
     <div class="photo-wrap">
-      <img src="candidate.png" alt="Aditya Raghav"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="photo-fallback">AR</div>
+      <img src="candidate.png" alt="Aditya Raghav">
     </div>
   </div>
 
-  <div class="gold-rule"></div>
+  <div class="double-rule"></div>
 
-  <!-- ═══ BODY ═══ -->
-  <div class="body">
-
-    <!-- ── Sidebar ── -->
-    <div class="sidebar">
-
-      <div>
-        <p class="sb-title">Contact</p>
-        <div class="sb-kv">
-          <div class="sb-kv-item">
-            <div class="sb-kv-label">Mobile</div>
-            <div class="sb-kv-value">+91 9110033470</div>
-          </div>
-          <div class="sb-kv-item">
-            <div class="sb-kv-label">Email</div>
-            <div class="sb-kv-value">
-              <a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a>
-            </div>
-          </div>
+  <!-- Contact + Address -->
+  <div class="info-grid">
+    <div>
+      <p class="section-label">Contact Information</p>
+      <div class="kv-list">
+        <div class="kv-row">
+          <span class="kv-label">Mobile</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">+91 9110033470</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">Email</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">
+            <a href="mailto:smartyadityaraghav@gmail.com">smartyadityaraghav@gmail.com</a>
+          </span>
         </div>
       </div>
-
-      <div>
-        <p class="sb-title">Address</p>
-        <div class="sb-addr">
-          Vill + P.O. Nadawan<br>
-          P.S. Barh, Distt. Patna<br>
-          Bihar — 803213
+    </div>
+    <div>
+      <p class="section-label">Permanent Address</p>
+      <div class="kv-list">
+        <div class="kv-row">
+          <span class="kv-label">Vill + P.O.</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Nadawan</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">P.S.</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Barh</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">District</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Patna</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">Pincode</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">803213</span>
+        </div>
+        <div class="kv-row">
+          <span class="kv-label">State</span>
+          <span class="kv-sep">–</span>
+          <span class="kv-value">Bihar</span>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div>
-        <p class="sb-title">Languages</p>
-        <div class="tag-list">
-          <div class="tag">English</div>
-          <div class="tag">Hindi</div>
-        </div>
+  <!-- Family Details -->
+  <p class="section-label">Family Details</p>
+  <div class="family-grid" style="margin-bottom:6mm;">
+    <div class="kv-row">
+      <span class="kv-label">Father's Name</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">Sameer Kumar</span>
+    </div>
+    <div class="kv-row">
+      <span class="kv-label">Occupation</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">Farmer</span>
+    </div>
+    <div class="kv-row">
+      <span class="kv-label">Mother's Name</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">Seema Devi</span>
+    </div>
+    <div class="kv-row">
+      <span class="kv-label">Siblings</span>
+      <span class="kv-sep">–</span>
+      <span class="kv-value">2</span>
+    </div>
+  </div>
+
+  <!-- Education + Additional Info -->
+  <div class="body-grid">
+    <div>
+      <p class="section-label">Education</p>
+
+      <div class="edu-entry">
+        <div class="edu-title">Graduation</div>
+        <div class="edu-detail">S.B.R. College, Bhatgaon, Barh, Patna</div>
+        <div class="edu-detail">Passed 2025 &nbsp;·&nbsp; <span class="edu-score">64%</span></div>
       </div>
 
-      <div>
-        <p class="sb-title">Strengths</p>
-        <div class="tag-list">
-          <div class="tag">Communication &amp; Interpersonal Skills</div>
-          <div class="tag">Multitasking</div>
-        </div>
+      <div class="edu-entry">
+        <div class="edu-title">Intermediate (10+2)</div>
+        <div class="edu-detail">S.B.R. College, Barh, Patna</div>
+        <div class="edu-detail">Passed 2022 &nbsp;·&nbsp; <span class="edu-score">65%</span></div>
       </div>
 
-      <div>
-        <p class="sb-title">Hobbies</p>
-        <div class="tag-list">
-          <div class="tag">Internet Surfing</div>
-          <div class="tag">Playing Cricket</div>
-        </div>
+      <div class="edu-entry">
+        <div class="edu-title">Matriculation (10th)</div>
+        <div class="edu-detail">Saraswati Vidya Mandir, Gulabbagh, Barh, Patna</div>
+        <div class="edu-detail">Passed 2020 &nbsp;·&nbsp; <span class="edu-score">56%</span></div>
       </div>
-
     </div>
 
-    <!-- ── Main ── -->
-    <div class="main">
+    <div class="panel">
+      <p class="panel-title">Additional Information</p>
+      <ul>
+        <li><strong>Strengths:</strong> Good communication and interpersonal skills, Multitasking</li>
+        <li><strong>Hobbies:</strong> Internet surfing and playing cricket</li>
+        <li><strong>Languages:</strong> English and Hindi</li>
+      </ul>
+    </div>
+  </div>
 
-      <!-- Career Objective -->
-      <div>
-        <div class="sec-head">
-          <div class="sec-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 17.93V18a1 1 0 00-2 0v1.93A8 8 0 014.07 13H6a1 1 0 000-2H4.07A8 8 0 0111 4.07V6a1 1 0 002 0V4.07A8 8 0 0119.93 11H18a1 1 0 000 2h1.93A8 8 0 0113 19.93zM12 14a2 2 0 110-4 2 2 0 010 4z"/></svg>
-          </div>
-          <h2>Career Objective</h2>
-        </div>
-        <p class="objective">
-          Seeking challenging assignments that would facilitate the maximum utilization of my skills
-          and knowledge, while contributing sincerely toward the goals of the organization. Eager to
-          learn, grow, and take on responsibilities that allow me to develop professionally and make
-          a meaningful contribution with dedication and integrity.
-        </p>
-      </div>
+  <div class="double-rule"></div>
 
-      <!-- Education -->
-      <div>
-        <div class="sec-head">
-          <div class="sec-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm-7 9.24V16l7 3.82L19 16v-3.76l-7 3.82-7-3.82z"/></svg>
-          </div>
-          <h2>Education</h2>
-        </div>
-        <div class="edu-list">
+  <!-- Career Objective -->
+  <p class="section-label">Career Objective</p>
+  <p class="objective-text" style="margin-bottom:6mm;">
+    Seeking challenging assignments that would facilitate the maximum utilization of my skills and
+    knowledge, while contributing positively to the organization. Eager to learn, grow, and take on
+    responsibilities that allow me to develop professionally and make a meaningful contribution.
+  </p>
 
-          <div class="edu-item">
-            <div class="edu-bar"></div>
-            <div>
-              <div class="edu-degree">Graduation</div>
-              <div class="edu-school">S.B.R. College, Bhatgaon, Barh, Patna</div>
-              <div class="edu-badges">
-                <span class="badge-year">Passed 2025</span>
-                <span class="badge-score">64%</span>
-              </div>
-            </div>
-          </div>
+  <!-- Declaration -->
+  <p class="section-label">Declaration</p>
+  <p class="declaration" style="margin-bottom:0;">
+    I hereby declare that the information furnished above is true and correct to the best of my
+    knowledge and belief.
+  </p>
 
-          <div class="edu-item">
-            <div class="edu-bar"></div>
-            <div>
-              <div class="edu-degree">Intermediate (10+2)</div>
-              <div class="edu-school">S.B.R. College, Barh, Patna</div>
-              <div class="edu-badges">
-                <span class="badge-year">Passed 2022</span>
-                <span class="badge-score">65%</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="edu-item">
-            <div class="edu-bar"></div>
-            <div>
-              <div class="edu-degree">Matriculation (10th)</div>
-              <div class="edu-school">Saraswati Vidya Mandir, Gulabbagh, Barh, Patna</div>
-              <div class="edu-badges">
-                <span class="badge-year">Passed 2020</span>
-                <span class="badge-score">56%</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Family Details -->
-      <div>
-        <div class="sec-head">
-          <div class="sec-icon">
-            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          </div>
-          <h2>Family Details</h2>
-        </div>
-        <div class="family-grid">
-          <div class="fam-item">
-            <span class="fam-label">Father's Name</span>
-            <span class="fam-value">Sameer Kumar</span>
-          </div>
-          <div class="fam-item">
-            <span class="fam-label">Father's Occupation</span>
-            <span class="fam-value">Farmer</span>
-          </div>
-          <div class="fam-item">
-            <span class="fam-label">Mother's Name</span>
-            <span class="fam-value">Seema Devi</span>
-          </div>
-          <div class="fam-item">
-            <span class="fam-label">Number of Siblings</span>
-            <span class="fam-value">2</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Declaration -->
-      <div>
-        <div class="sec-head">
-          <div class="sec-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/></svg>
-          </div>
-          <h2>Declaration</h2>
-        </div>
-        <p class="decl-text">
-          I hereby declare that all information furnished in this resume is true, complete, and
-          correct to the best of my knowledge and belief. I understand that any false information
-          may lead to disqualification of my application.
-        </p>
-
-        <div class="sign-row">
-          <div>
-            <div class="sign-field">
-              <span class="sign-field-label">Place</span>
-              <span class="sign-field-val">Patna, Bihar</span>
-            </div>
-            <div class="sign-field">
-              <span class="sign-field-label">Date</span>
-              <span class="sign-field-val">&nbsp;</span>
-            </div>
-          </div>
-          <div class="sign-right">
-            <div><span class="sign-line"></span></div>
-            <div class="sign-name">(Aditya Raghav)</div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /main -->
-  </div><!-- /body -->
-
-  <div class="bottombar"></div>
+  <div class="sign-row">
+    <div>
+      <div style="margin-bottom:6px;"><strong>Place:</strong> Patna, Bihar</div>
+      <div><strong>Date:</strong> &nbsp;&nbsp;&nbsp;______________</div>
+    </div>
+    <div class="signature">
+      <div><span class="sign-line"></span></div>
+      <div>(Aditya Raghav)</div>
+    </div>
+  </div>
 
 </div>
 </body>
